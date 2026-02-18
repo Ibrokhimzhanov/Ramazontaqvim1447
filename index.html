@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ramazon Taqvim 1447</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Screen 1: Welcome -->
+    <div id="screen-welcome" class="screen active">
+        <div class="welcome-container">
+            <div class="welcome-icon">🌙</div>
+            <h1>Ramazon Taqvim</h1>
+            <h2>1447</h2>
+            <p class="welcome-text">Muborak Ramazon oyiga tayyormisiz?<br>30 kunlik taqvim va milliy taomlar retseptlari</p>
+            <button class="btn btn-primary" onclick="showScreen('screen-phone')">Boshlash</button>
+        </div>
+    </div>
+
+    <!-- Screen 2: Phone Number -->
+    <div id="screen-phone" class="screen">
+        <div class="form-container">
+            <button class="btn-back" onclick="showScreen('screen-welcome')">←</button>
+            <div class="form-icon">📱</div>
+            <h2>Telefon raqamingiz</h2>
+            <p class="form-hint">Raqamingizni kiriting</p>
+            <div class="phone-input-wrapper">
+                <span class="phone-prefix">+998</span>
+                <input
+                    type="tel"
+                    id="phone-input"
+                    placeholder="90 123 45 67"
+                    maxlength="12"
+                    oninput="formatPhone(this); validatePhone()"
+                >
+            </div>
+            <div id="phone-error" class="error-text"></div>
+            <button class="btn btn-primary" id="btn-phone-next" disabled onclick="showScreen('screen-gender')">Davom etish</button>
+        </div>
+    </div>
+
+    <!-- Screen 3: Gender Selection -->
+    <div id="screen-gender" class="screen">
+        <div class="form-container">
+            <button class="btn-back" onclick="showScreen('screen-phone')">←</button>
+            <h2>Ma'lumotlaringiz</h2>
+            <p class="form-hint">Ismingiz va jinsingizni tanlang</p>
+
+            <input
+                type="text"
+                id="name-input"
+                class="text-input"
+                placeholder="Ismingiz"
+                oninput="validateGenderForm()"
+            >
+
+            <p class="label">Jinsingiz</p>
+            <div class="gender-options">
+                <div class="gender-card" id="gender-male" onclick="selectGender('male')">
+                    <div class="gender-icon">👨</div>
+                    <span>Erkak</span>
+                </div>
+                <div class="gender-card" id="gender-female" onclick="selectGender('female')">
+                    <div class="gender-icon">👩</div>
+                    <span>Ayol</span>
+                </div>
+            </div>
+            <div id="gender-error" class="error-text"></div>
+            <button class="btn btn-primary" id="btn-gender-next" disabled onclick="finishOnboarding()">Davom etish</button>
+        </div>
+    </div>
+
+    <!-- Screen 4: Greeting -->
+    <div id="screen-greeting" class="screen">
+        <div class="greeting-container">
+            <div class="greeting-stars">
+                <span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span>
+            </div>
+            <div class="greeting-moon">🌙</div>
+            <div class="greeting-name" id="greeting-name"></div>
+            <div class="greeting-text" id="greeting-text"></div>
+            <div class="greeting-year">1447</div>
+            <button class="btn btn-greeting" onclick="afterGreeting()">Davom etish</button>
+        </div>
+    </div>
+
+    <!-- Screen 5: Region Selection -->
+    <div id="screen-region" class="screen">
+        <div class="form-container">
+            <button class="btn-back" onclick="showScreen('screen-greeting')">←</button>
+            <h2>Viloyatingiz</h2>
+            <p class="form-hint">Hududingizni tanlang</p>
+            <div class="region-list" id="region-list"></div>
+        </div>
+    </div>
+
+    <!-- Screen 6: Food (Women) -->
+    <div id="screen-main" class="screen">
+        <div class="food-container">
+            <button class="btn-reset" onclick="resetApp()">Reset</button>
+
+            <h1 class="food-title">Ramazon 2026</h1>
+
+            <!-- Featured -->
+            <div class="featured-card">
+                <div class="featured-header">
+                    <span>Bugungi tavsiyamiz!</span>
+                    <span class="featured-star">⭐</span>
+                </div>
+                <div class="featured-img" id="featured-img"></div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="food-tabs">
+                <button class="tab active" onclick="switchTab('saharlik', this)">Saharlik</button>
+                <button class="tab" onclick="switchTab('iftorlik', this)">Iftorlik</button>
+                <button class="tab" onclick="switchTab('gazaklar', this)">Gazaklar</button>
+            </div>
+
+            <!-- Recipe Grid -->
+            <div class="food-grid" id="food-grid"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
