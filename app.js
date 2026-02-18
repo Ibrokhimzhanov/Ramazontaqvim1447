@@ -250,24 +250,28 @@ function loadFoodScreen() {
     // Featured images
     var featuredEl = document.getElementById('featured-img');
     if (featuredEl) {
-        featuredEl.innerHTML = featuredImages.map(function(src) {
-            return '<img src="' + src + '" alt="Tavsiya">';
-        }).join('');
+        var fhtml = '';
+        for (var i = 0; i < featuredImages.length; i++) {
+            fhtml += '<img src="' + featuredImages[i] + '" alt="Tavsiya">';
+        }
+        featuredEl.innerHTML = fhtml;
     }
 
-    // Load default tab
+    // Load default tab with retry
     loadFoodGrid('saharlik');
+    setTimeout(function() { loadFoodGrid('saharlik'); }, 300);
+    setTimeout(function() { loadFoodGrid('saharlik'); }, 800);
 
     // Preload other tab images in background
-    setTimeout(preloadAllImages, 1000);
+    setTimeout(preloadAllImages, 2000);
 }
 
 function preloadAllImages() {
-    var allImages = [].concat(foodData.iftorlik, foodData.gazaklar);
-    allImages.forEach(function(f) {
+    var all = [].concat(foodData.iftorlik, foodData.gazaklar);
+    for (var i = 0; i < all.length; i++) {
         var img = new Image();
-        img.src = f.img;
-    });
+        img.src = all[i].img;
+    }
 }
 
 function loadFoodGrid(tab) {
@@ -286,7 +290,8 @@ function loadFoodGrid(tab) {
 
 function switchTab(tab, btn) {
     currentTab = tab;
-    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    var tabs = document.querySelectorAll('.tab');
+    for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('active'); }
     btn.classList.add('active');
     loadFoodGrid(tab);
 }
@@ -297,11 +302,17 @@ function resetApp() {
     location.reload();
 }
 
-// Check if user already registered — runs after full page load
-window.onload = function() {
+// Try loading at multiple points to ensure it works
+document.addEventListener('DOMContentLoaded', initApp);
+window.addEventListener('load', initApp);
+
+var appInitialized = false;
+function initApp() {
+    if (appInitialized) return;
     var saved = localStorage.getItem('ramazon_user');
     if (saved) {
+        appInitialized = true;
         showScreen('screen-main');
         loadFoodScreen();
     }
-};
+}
