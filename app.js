@@ -196,7 +196,7 @@ const foodData = {
         { name: "Uyg'ur Lagmon", img: "images/uyg'ur-lagmon.png" },
         { name: 'Tova-Manti', img: 'images/tova-manti.png' },
         { name: 'Kotleta po Kiyevski', img: 'images/Kotleta-po-Kiyevski.png' },
-        { name: 'Chahonbili', img: 'images/chahonbili.png' },
+        { name: 'Chahonbili', img: 'images/Chahonbili.png' },
     ],
     iftorlik: [
         { name: 'Mastava', img: 'images/mastava.png' },
