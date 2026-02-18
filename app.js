@@ -247,17 +247,22 @@ const featuredImages = [
 let currentTab = 'saharlik';
 
 function loadFoodScreen() {
-    // Featured images
-    const featuredEl = document.getElementById('featured-img');
-    featuredEl.innerHTML = featuredImages.map(src =>
-        `<img src="${src}" alt="Tavsiya" loading="eager">`
-    ).join('');
+    // Wait for DOM to be ready
+    requestAnimationFrame(() => {
+        // Featured images
+        const featuredEl = document.getElementById('featured-img');
+        if (featuredEl) {
+            featuredEl.innerHTML = featuredImages.map(src =>
+                `<img src="${src}" alt="Tavsiya" loading="eager">`
+            ).join('');
+        }
 
-    // Load default tab
-    loadFoodGrid('saharlik');
+        // Load default tab
+        loadFoodGrid('saharlik');
 
-    // Preload ALL images in background
-    preloadAllImages();
+        // Preload ALL images in background
+        setTimeout(preloadAllImages, 500);
+    });
 }
 
 function preloadAllImages() {
@@ -274,6 +279,7 @@ function preloadAllImages() {
 
 function loadFoodGrid(tab) {
     const grid = document.getElementById('food-grid');
+    if (!grid) return;
     const items = foodData[tab] || [];
     grid.innerHTML = items.map(f => `
         <div class="food-card">
@@ -301,6 +307,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('ramazon_user');
     if (saved) {
         showScreen('screen-main');
-        loadFoodScreen();
+        // Small delay to ensure screen is visible before loading content
+        setTimeout(() => loadFoodScreen(), 100);
     }
 });
