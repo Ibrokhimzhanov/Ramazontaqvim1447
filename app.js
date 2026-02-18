@@ -255,11 +255,26 @@ function loadFoodScreen() {
     // Featured images
     const featuredEl = document.getElementById('featured-img');
     featuredEl.innerHTML = featuredImages.map(src =>
-        `<img src="${src}" alt="Tavsiya" loading="lazy">`
+        `<img src="${src}" alt="Tavsiya" loading="eager">`
     ).join('');
 
     // Load default tab
     loadFoodGrid('saharlik');
+
+    // Preload ALL images in background
+    preloadAllImages();
+}
+
+function preloadAllImages() {
+    const allImages = [
+        ...foodData.saharlik,
+        ...foodData.iftorlik,
+        ...foodData.gazaklar,
+    ];
+    allImages.forEach(f => {
+        const img = new Image();
+        img.src = f.img;
+    });
 }
 
 function loadFoodGrid(tab) {
@@ -267,7 +282,7 @@ function loadFoodGrid(tab) {
     const items = foodData[tab] || [];
     grid.innerHTML = items.map(f => `
         <div class="food-card">
-            <img src="${f.img}" alt="${f.name}" loading="lazy">
+            <img src="${f.img}" alt="${f.name}" loading="eager">
             <div class="food-card-name">${f.name}</div>
         </div>
     `).join('');
