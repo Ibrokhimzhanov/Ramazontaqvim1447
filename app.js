@@ -247,51 +247,46 @@ const featuredImages = [
 let currentTab = 'saharlik';
 
 function loadFoodScreen() {
-    // Wait for DOM to be ready
-    requestAnimationFrame(() => {
-        // Featured images
-        const featuredEl = document.getElementById('featured-img');
-        if (featuredEl) {
-            featuredEl.innerHTML = featuredImages.map(src =>
-                `<img src="${src}" alt="Tavsiya" loading="eager">`
-            ).join('');
-        }
+    // Featured images
+    var featuredEl = document.getElementById('featured-img');
+    if (featuredEl) {
+        featuredEl.innerHTML = featuredImages.map(function(src) {
+            return '<img src="' + src + '" alt="Tavsiya">';
+        }).join('');
+    }
 
-        // Load default tab
-        loadFoodGrid('saharlik');
+    // Load default tab
+    loadFoodGrid('saharlik');
 
-        // Preload ALL images in background
-        setTimeout(preloadAllImages, 500);
-    });
+    // Preload other tab images in background
+    setTimeout(preloadAllImages, 1000);
 }
 
 function preloadAllImages() {
-    const allImages = [
-        ...foodData.saharlik,
-        ...foodData.iftorlik,
-        ...foodData.gazaklar,
-    ];
-    allImages.forEach(f => {
-        const img = new Image();
+    var allImages = [].concat(foodData.iftorlik, foodData.gazaklar);
+    allImages.forEach(function(f) {
+        var img = new Image();
         img.src = f.img;
     });
 }
 
 function loadFoodGrid(tab) {
-    const grid = document.getElementById('food-grid');
+    var grid = document.getElementById('food-grid');
     if (!grid) return;
-    const items = foodData[tab] || [];
-    grid.innerHTML = items.map(f => `
-        <div class="food-card">
-            <img src="${f.img}" alt="${f.name}" loading="eager">
-            <div class="food-card-name">${f.name}</div>
-        </div>
-    `).join('');
+    var items = foodData[tab] || [];
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+        html += '<div class="food-card">';
+        html += '<img src="' + items[i].img + '" alt="' + items[i].name + '">';
+        html += '<div class="food-card-name">' + items[i].name + '</div>';
+        html += '</div>';
+    }
+    grid.innerHTML = html;
 }
 
 function switchTab(tab, btn) {
     currentTab = tab;
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
     btn.classList.add('active');
     loadFoodGrid(tab);
 }
@@ -299,15 +294,14 @@ function switchTab(tab, btn) {
 // Reset app (temp)
 function resetApp() {
     localStorage.clear();
-    showScreen('screen-welcome');
+    location.reload();
 }
 
-// Check if user already registered
-window.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('ramazon_user');
+// Check if user already registered — runs after full page load
+window.onload = function() {
+    var saved = localStorage.getItem('ramazon_user');
     if (saved) {
         showScreen('screen-main');
-        // Small delay to ensure screen is visible before loading content
-        setTimeout(() => loadFoodScreen(), 100);
+        loadFoodScreen();
     }
-});
+};
