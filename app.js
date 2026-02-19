@@ -246,16 +246,28 @@ const featuredImages = [
 
 let currentTab = 'saharlik';
 
-function loadFoodScreen() {
-    // Featured images
+function getDayIndex() {
+    var now = new Date();
+    var start = new Date(now.getFullYear(), 0, 0);
+    var diff = now - start;
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
+}
+
+function updateFeatured(tab) {
     var featuredEl = document.getElementById('featured-img');
-    if (featuredEl) {
-        var fhtml = '';
-        for (var i = 0; i < featuredImages.length; i++) {
-            fhtml += '<img src="' + featuredImages[i] + '" alt="Tavsiya">';
-        }
-        featuredEl.innerHTML = fhtml;
-    }
+    if (!featuredEl) return;
+    var items = foodData[tab] || [];
+    if (items.length === 0) return;
+    var day = getDayIndex();
+    var idx1 = day % items.length;
+    var idx2 = (day + 1) % items.length;
+    featuredEl.innerHTML = '<img src="' + items[idx1].img + '" alt="' + items[idx1].name + '">' +
+                           '<img src="' + items[idx2].img + '" alt="' + items[idx2].name + '">';
+}
+
+function loadFoodScreen() {
+    // Featured based on current tab and day
+    updateFeatured('saharlik');
 
     // Load default tab with retry
     loadFoodGrid('saharlik');
@@ -294,6 +306,7 @@ function switchTab(tab, btn) {
     for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('active'); }
     btn.classList.add('active');
     loadFoodGrid(tab);
+    updateFeatured(tab);
 }
 
 // Reset app (temp)
