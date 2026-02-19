@@ -259,10 +259,8 @@ function updateFeatured(tab) {
     var items = foodData[tab] || [];
     if (items.length === 0) return;
     var day = getDayIndex();
-    var idx1 = day % items.length;
-    var idx2 = (day + 1) % items.length;
-    featuredEl.innerHTML = '<img src="' + items[idx1].img + '" alt="' + items[idx1].name + '">' +
-                           '<img src="' + items[idx2].img + '" alt="' + items[idx2].name + '">';
+    var idx = day % items.length;
+    featuredEl.innerHTML = '<img src="' + items[idx].img + '" alt="' + items[idx].name + '">';
 }
 
 function loadFoodScreen() {
