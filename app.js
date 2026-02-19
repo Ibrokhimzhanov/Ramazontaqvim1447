@@ -239,11 +239,6 @@ const foodData = {
     ],
 };
 
-const featuredImages = [
-    'images/toshkent-osh.png',
-    'images/andijon-osh.png',
-];
-
 let currentTab = 'saharlik';
 
 function getDayIndex() {
