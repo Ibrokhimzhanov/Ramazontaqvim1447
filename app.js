@@ -185,7 +185,7 @@ function goToMain() {
 // File naming: lowercase, spaces → hyphen. Example: "Toshkent oshi" → "toshkent-oshi.jpg"
 const foodData = {
     saharlik: [
-        { name: 'Toshkent oshi', img: 'images/toshkent-osh.png' },
+        { name: 'Toshkent oshi', img: 'images/high-quality/toshkent-oshi.png' },
         { name: 'Andijon oshi', img: 'images/andijon-osh.png' },
         { name: 'Dimlama', img: 'images/dimlama.png' },
         { name: 'Qazon Kabob', img: 'images/qazonkabob.png' },
