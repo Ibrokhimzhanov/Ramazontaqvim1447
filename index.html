@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ramazon Taqvim 1447</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
     <!-- Screen 1: Welcome -->
@@ -96,6 +96,27 @@
         </div>
     </div>
 
+    <!-- Screen: Recipe Detail -->
+    <div id="screen-recipe" style="display:none">
+        <div class="recipe-screen">
+            <div class="recipe-img-wrapper">
+                <button class="recipe-back" onclick="closeRecipe()">←</button>
+                <img class="recipe-img" id="recipe-img" src="" alt="">
+            </div>
+            <div class="recipe-content">
+                <h2 class="recipe-title" id="recipe-title"></h2>
+
+                <h3 class="recipe-section-title">Kerakli mahsulotlar</h3>
+                <div class="ingredient-list" id="ingredient-list"></div>
+
+                <h3 class="recipe-section-title">Tayyorlanish bosqichlari</h3>
+                <div class="steps-list" id="steps-list"></div>
+
+                <button class="btn btn-primary btn-tamomlash" onclick="closeRecipe()">Tamomlash</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Screen 6: Food (Women) -->
     <div id="screen-main" class="screen">
         <div class="food-container">
@@ -121,7 +142,7 @@
                 <button class="tab" onclick="switchTab('gazaklar', this)">Gazaklar</button>
             </div>
 
-            <!-- Recipe Grid (saharlik by default in HTML) -->
+            <!-- Recipe Grid -->
             <div class="food-grid" id="food-grid">
                 <div class="food-card"><img src="images/toshkent-osh.png" alt="Toshkent oshi"><div class="food-card-name">Toshkent oshi</div></div>
                 <div class="food-card"><img src="images/andijon-osh.png" alt="Andijon oshi"><div class="food-card-name">Andijon oshi</div></div>
@@ -147,6 +168,6 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=2"></script>
 </body>
 </html>

@@ -576,6 +576,7 @@ body {
     overflow: hidden;
     box-shadow: var(--card-shadow);
     transition: transform 0.2s;
+    cursor: pointer;
 }
 
 .food-card:active {
@@ -594,6 +595,164 @@ body {
     font-size: 13px;
     font-weight: 600;
     color: var(--text);
+}
+
+/* ========== Recipe Detail Screen ========== */
+.recipe-screen {
+    width: 100%;
+    min-height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+#screen-recipe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+}
+
+.recipe-img-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.recipe-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.recipe-back {
+    position: absolute;
+    top: calc(12px + var(--safe-top));
+    left: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 5;
+    -webkit-appearance: none;
+}
+
+.recipe-back:active {
+    transform: scale(0.92);
+}
+
+.recipe-content {
+    padding: 20px 16px calc(24px + var(--safe-bottom));
+}
+
+.recipe-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.recipe-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.ingredient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.ingredient-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+.ingredient-name {
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ingredient-name::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    flex-shrink: 0;
+}
+
+.ingredient-amount {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    white-space: nowrap;
+    margin-left: 12px;
+}
+
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.step-card {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    background: #e6f9ee;
+    border-radius: 12px;
+}
+
+.step-number {
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+    padding-top: 3px;
+}
+
+.btn-tamomlash {
+    margin-top: 8px;
 }
 
 /* Temp Reset Button */
