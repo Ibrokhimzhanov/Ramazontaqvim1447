@@ -93,6 +93,8 @@ function finishOnboarding() {
 function afterGreeting() {
     showScreen('screen-main');
     loadFoodScreen();
+    // Retry in case DOM wasn't ready
+    setTimeout(function() { loadFoodGrid(currentTab); updateFeatured(currentTab); }, 100);
 }
 
 // Greeting screen
