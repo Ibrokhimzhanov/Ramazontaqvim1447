@@ -144,8 +144,10 @@ function confirmPayment() {
     btn.style.display = 'none';
     status.style.display = 'block';
 
+    // Get user info from URL params (passed by bot) or Telegram WebApp
+    var urlParams = new URLSearchParams(window.location.search);
     var user = (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) || {};
-    var userId = user.id || 0;
+    var userId = urlParams.get('uid') || user.id || 0;
     var firstName = user.first_name || '';
     var username = user.username ? '@' + user.username : "yo'q";
 
