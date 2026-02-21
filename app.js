@@ -91,10 +91,41 @@ function finishOnboarding() {
 
 // Route after greeting
 function afterGreeting() {
-    showScreen('screen-main');
-    loadFoodScreen();
-    // Retry in case DOM wasn't ready
-    setTimeout(function() { loadFoodGrid(currentTab); updateFeatured(currentTab); }, 100);
+    // Check if user already paid
+    var saved = JSON.parse(localStorage.getItem('ramazon_user') || '{}');
+    if (saved.paid) {
+        showScreen('screen-main');
+        loadFoodScreen();
+        setTimeout(function() { loadFoodGrid(currentTab); updateFeatured(currentTab); }, 100);
+    } else {
+        showScreen('screen-payment');
+    }
+}
+
+// Copy card number
+function copyCard() {
+    var cardNum = '5614682115487631';
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(cardNum);
+    }
+    var btn = document.querySelector('.btn-copy');
+    if (btn) {
+        btn.textContent = '✅';
+        setTimeout(function() { btn.textContent = '📋'; }, 1500);
+    }
+}
+
+// Confirm payment — send data to bot via Telegram WebApp
+function confirmPayment() {
+    var btn = document.getElementById('btn-confirm-payment');
+    var status = document.getElementById('payment-status');
+    btn.style.display = 'none';
+    status.style.display = 'block';
+
+    // Send payment confirmation to bot
+    if (tg && tg.sendData) {
+        tg.sendData(JSON.stringify({ action: 'confirm_payment' }));
+    }
 }
 
 // Greeting screen
@@ -389,11 +420,24 @@ function initApp() {
     // Attach click handlers via event delegation (works with cached HTML too)
     setupFoodClickHandlers();
 
-    var saved = localStorage.getItem('ramazon_user');
-    if (saved) {
+    // Check if opened with ?paid=true (admin approved)
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('paid') === 'true') {
+        var saved = JSON.parse(localStorage.getItem('ramazon_user') || '{}');
+        saved.paid = true;
+        localStorage.setItem('ramazon_user', JSON.stringify(saved));
+    }
+
+    var saved = JSON.parse(localStorage.getItem('ramazon_user') || '{}');
+    if (saved.name && saved.paid) {
+        // Returning paid user — go straight to recipes
         showScreen('screen-main');
         loadFoodScreen();
+    } else if (saved.name && !saved.paid) {
+        // Has name but not paid — show payment
+        showScreen('screen-payment');
     }
+    // else: new user — stays on welcome screen
 }
 
 function setupFoodClickHandlers() {

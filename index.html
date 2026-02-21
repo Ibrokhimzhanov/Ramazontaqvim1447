@@ -52,6 +52,40 @@
         </div>
     </div>
 
+    <!-- Screen 5: Payment -->
+    <div id="screen-payment" class="screen">
+        <div class="payment-container">
+            <div class="payment-icon">💳</div>
+            <h2>To'lov</h2>
+            <p class="payment-desc">Ilovadan foydalanish uchun to'lovni amalga oshiring</p>
+
+            <div class="payment-card">
+                <div class="payment-row">
+                    <span class="payment-label">💳 Karta raqami:</span>
+                    <span class="payment-value" id="card-number">5614 6821 1548 7631</span>
+                    <button class="btn-copy" onclick="copyCard()">📋</button>
+                </div>
+                <div class="payment-row">
+                    <span class="payment-label">👤 Karta egasi:</span>
+                    <span class="payment-value">Nasibillo Ravshanbekov</span>
+                </div>
+                <div class="payment-row">
+                    <span class="payment-label">💰 Narxi:</span>
+                    <span class="payment-value payment-price">50 000 so'm</span>
+                </div>
+            </div>
+
+            <p class="payment-hint">To'lovni amalga oshirgach, quyidagi tugmani bosing</p>
+            <button class="btn btn-primary btn-payment" id="btn-confirm-payment" onclick="confirmPayment()">✅ To'lovni tasdiqlayman</button>
+
+            <div id="payment-status" class="payment-status" style="display:none">
+                <div class="payment-spinner"></div>
+                <p>⏳ To'lovingiz tekshirilmoqda...</p>
+                <p class="payment-status-sub">Admin tasdiqlashi bilan kirish ochiladi</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Screen: Recipe Detail -->
     <div id="screen-recipe" style="display:none">
         <div class="recipe-screen">

@@ -476,6 +476,144 @@ body {
     background: var(--primary-dark);
 }
 
+/* ========== Payment Screen ========== */
+.payment-container {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+    background: linear-gradient(180deg, #f0fdf6 0%, #fff 100%);
+    text-align: center;
+}
+
+.payment-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+}
+
+.payment-container h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.payment-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 280px;
+}
+
+.payment-card {
+    width: 100%;
+    max-width: 340px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+}
+
+.payment-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f3f4f6;
+    flex-wrap: wrap;
+}
+
+.payment-row:last-child {
+    border-bottom: none;
+}
+
+.payment-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.payment-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    word-break: break-all;
+}
+
+.payment-price {
+    color: var(--primary);
+    font-size: 18px;
+}
+
+.btn-copy {
+    background: var(--bg-secondary);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    transition: all 0.2s;
+    -webkit-appearance: none;
+}
+
+.btn-copy:active {
+    transform: scale(0.9);
+}
+
+.payment-hint {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.btn-payment {
+    width: 100%;
+    max-width: 340px;
+    padding: 16px;
+    font-size: 16px;
+}
+
+.payment-status {
+    text-align: center;
+    padding: 20px;
+}
+
+.payment-status p {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.payment-status-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 400 !important;
+}
+
+.payment-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e5e7eb;
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 /* ========== Food Screen (Women) ========== */
 .food-container {
     width: 100%;
