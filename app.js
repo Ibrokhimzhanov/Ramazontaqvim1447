@@ -91,7 +91,8 @@ function finishOnboarding() {
 
 // Route after greeting
 function afterGreeting() {
-    showScreen('screen-region');
+    showScreen('screen-main');
+    loadFoodScreen();
 }
 
 // Greeting screen
