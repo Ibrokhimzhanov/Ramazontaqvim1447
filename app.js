@@ -282,16 +282,21 @@ function loadFoodScreen() {
 }
 
 function preloadAllImages() {
-    var all = [].concat(foodData.iftorlik, foodData.gazaklar);
+    var all = [].concat(foodData.saharlik, foodData.iftorlik, foodData.gazaklar);
     for (var i = 0; i < all.length; i++) {
         var img = new Image();
         img.src = all[i].img + '?v=4';
     }
+    // Pre-build grid caches so tab switching is instant
+    gridCache['saharlik'] = buildFoodGrid('saharlik');
+    gridCache['iftorlik'] = buildFoodGrid('iftorlik');
+    gridCache['gazaklar'] = buildFoodGrid('gazaklar');
 }
 
-function loadFoodGrid(tab) {
-    var grid = document.getElementById('food-grid');
-    if (!grid) return;
+// Cache built grids so switching tabs is instant
+var gridCache = {};
+
+function buildFoodGrid(tab) {
     var items = foodData[tab] || [];
     var html = '';
     for (var i = 0; i < items.length; i++) {
@@ -300,7 +305,16 @@ function loadFoodGrid(tab) {
         html += '<div class="food-card-name">' + items[i].name + '</div>';
         html += '</div>';
     }
-    grid.innerHTML = html;
+    return html;
+}
+
+function loadFoodGrid(tab) {
+    var grid = document.getElementById('food-grid');
+    if (!grid) return;
+    if (!gridCache[tab]) {
+        gridCache[tab] = buildFoodGrid(tab);
+    }
+    grid.innerHTML = gridCache[tab];
 }
 
 function switchTab(tab, btn) {
