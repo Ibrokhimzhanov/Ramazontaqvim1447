@@ -265,7 +265,7 @@ function updateFeatured(tab) {
     featuredEl.setAttribute('data-name', items[idx].name);
     featuredEl.setAttribute('data-img', items[idx].img);
     featuredEl.style.cursor = 'pointer';
-    featuredEl.innerHTML = '<img src="' + items[idx].img + '" alt="' + items[idx].name + '">';
+    featuredEl.innerHTML = '<img src="' + items[idx].img + '?v=3" alt="' + items[idx].name + '">';
 }
 
 function loadFoodScreen() {
@@ -285,7 +285,7 @@ function preloadAllImages() {
     var all = [].concat(foodData.iftorlik, foodData.gazaklar);
     for (var i = 0; i < all.length; i++) {
         var img = new Image();
-        img.src = all[i].img;
+        img.src = all[i].img + '?v=3';
     }
 }
 
@@ -296,7 +296,7 @@ function loadFoodGrid(tab) {
     var html = '';
     for (var i = 0; i < items.length; i++) {
         html += '<div class="food-card" data-name="' + items[i].name.replace(/"/g, '&quot;') + '" data-img="' + items[i].img.replace(/"/g, '&quot;') + '">';
-        html += '<img src="' + items[i].img + '" alt="' + items[i].name + '">';
+        html += '<img src="' + items[i].img + '?v=3" alt="' + items[i].name + '">';
         html += '<div class="food-card-name">' + items[i].name + '</div>';
         html += '</div>';
     }
