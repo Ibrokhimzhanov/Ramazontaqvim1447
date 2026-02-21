@@ -897,7 +897,7 @@ const recipes = {
             "Ta'bga ko'ra tuz va murch soling.",
         ],
     },
-    'Toshkent salatlari': {
+    'Toshkent': {
         ingredients: [
             { name: 'Daikon turpi (yoki oddiy)', amount: '150 gr' },
             { name: "Qaynatilgan Go'sht", amount: '400 gr' },

@@ -233,7 +233,7 @@ const foodData = {
         { name: 'Olivia', img: 'images/olivia.png' },
         { name: 'Tovuqli sezar', img: 'images/tovuqli-sezar.png' },
         { name: 'Suzma salat', img: 'images/suzma-salat.png' },
-        { name: 'Toshkent salatlari', img: 'images/toshkent-salatlari.png' },
+        { name: 'Toshkent', img: 'images/toshkent-salatlari.png' },
         { name: 'Qarsildoq Baqlajon', img: 'images/qarsildoq-baqlajon.png' },
         { name: 'Vinegret', img: 'images/vinegret.png' },
         { name: 'Horovatz', img: 'images/horovatz.png' },
