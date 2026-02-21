@@ -24,28 +24,16 @@
         <div class="form-container">
             <button class="btn-back" onclick="showScreen('screen-welcome')">←</button>
             <h2>Ma'lumotlaringiz</h2>
-            <p class="form-hint">Ismingiz va jinsingizni tanlang</p>
+            <p class="form-hint">Ismingizni kiriting</p>
 
             <input
                 type="text"
                 id="name-input"
                 class="text-input"
                 placeholder="Ismingiz"
-                oninput="validateGenderForm()"
+                oninput="validateNameForm()"
             >
 
-            <p class="label">Jinsingiz</p>
-            <div class="gender-options">
-                <div class="gender-card" id="gender-male" onclick="selectGender('male')">
-                    <div class="gender-icon">👨</div>
-                    <span>Erkak</span>
-                </div>
-                <div class="gender-card" id="gender-female" onclick="selectGender('female')">
-                    <div class="gender-icon">👩</div>
-                    <span>Ayol</span>
-                </div>
-            </div>
-            <div id="gender-error" class="error-text"></div>
             <button class="btn btn-primary" id="btn-gender-next" disabled onclick="finishOnboarding()">Davom etish</button>
         </div>
     </div>

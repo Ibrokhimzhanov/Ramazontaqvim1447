@@ -70,55 +70,36 @@ function validatePhone() {
     }
 }
 
-// Gender selection
-function selectGender(gender) {
-    selectedGender = gender;
-    document.getElementById('gender-male').classList.toggle('selected', gender === 'male');
-    document.getElementById('gender-female').classList.toggle('selected', gender === 'female');
-    validateGenderForm();
-}
-
-// Gender form validation
-function validateGenderForm() {
+// Name form validation
+function validateNameForm() {
     const name = document.getElementById('name-input').value.trim();
     const btn = document.getElementById('btn-gender-next');
-    btn.disabled = !(name.length >= 2 && selectedGender);
+    btn.disabled = !(name.length >= 2);
 }
 
 // Finish onboarding
 function finishOnboarding() {
-    const phone = '+998' + document.getElementById('phone-input').value.replace(/\D/g, '');
     const name = document.getElementById('name-input').value.trim();
-    const gender = selectedGender;
 
     // Save user data
-    const userData = { phone, name, gender };
+    const userData = { name };
     localStorage.setItem('ramazon_user', JSON.stringify(userData));
 
-    // Show greeting (then routes based on gender)
-    showGreeting(name, gender);
+    // Show greeting
+    showGreeting(name);
 }
 
-// Route after greeting based on gender
+// Route after greeting
 function afterGreeting() {
-    const saved = JSON.parse(localStorage.getItem('ramazon_user') || '{}');
-    if (saved.gender === 'female') {
-        showScreen('screen-main');
-        loadFoodScreen();
-    } else {
-        showScreen('screen-region');
-    }
+    showScreen('screen-region');
 }
 
 // Greeting screen
-function showGreeting(name, gender) {
+function showGreeting(name) {
     const displayName = name.charAt(0).toUpperCase() + name.slice(1);
     document.getElementById('greeting-name').textContent = displayName;
 
-    const greetings = gender === 'female' ? [
-        `Hurmatli ${displayName}, Sizni muborak Ramazon oyi bilan chin dildan tabriklaymiz! Alloh taolo ro'zalaringizni qabul qilsin, bu oy Sizga baraka, sabr va oilaviy baxt olib kelsin.`,
-        `Aziz ${displayName}, Ramazon muborak bo'lsin! Bu muqaddas oyda har bir duoyingiz ijobat bo'lsin, sufrangiz doimo to'q bo'lsin.`,
-    ] : [
+    const greetings = [
         `Hurmatli ${displayName}, Sizni muborak Ramazon oyi bilan chin dildan tabriklaymiz! Alloh taolo ro'zalaringizni qabul qilsin, bu oy Sizga baraka, sabr va salomatlik ato etsin.`,
         `Aziz ${displayName}, Ramazon muborak bo'lsin! Bu muqaddas oyda har bir duoyingiz ijobat bo'lsin, amallaringiz savobga to'lsin.`,
     ];
