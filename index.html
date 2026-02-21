@@ -109,11 +109,29 @@
                 <h3 class="recipe-section-title">Kerakli mahsulotlar</h3>
                 <div class="ingredient-list" id="ingredient-list"></div>
 
-                <h3 class="recipe-section-title">Tayyorlanish bosqichlari</h3>
+                <h3 class="recipe-section-title">Tayyorlanishi</h3>
                 <div class="steps-list" id="steps-list"></div>
 
-                <button class="btn btn-primary btn-tamomlash" onclick="closeRecipe()">Tamomlash</button>
+                <button class="btn btn-primary btn-tamomlash" onclick="showYoqimliIshtaha()">Tamomlash</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Screen: Yoqimli Ishtaha (Bon Appetit) -->
+    <div id="screen-yoqimli" style="display:none">
+        <div class="yoqimli-screen">
+            <div class="yoqimli-icon">
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                    <circle cx="60" cy="60" r="56" fill="#e6f9ee"/>
+                    <ellipse cx="60" cy="78" rx="28" ry="12" fill="#c4f5d6"/>
+                    <path d="M32 72 C32 50 44 36 60 36 C76 36 88 50 88 72" fill="#d1d5db" stroke="#9ca3af" stroke-width="2"/>
+                    <rect x="40" y="72" width="40" height="16" rx="4" fill="#e5e7eb" stroke="#9ca3af" stroke-width="2"/>
+                    <circle cx="60" cy="32" r="6" fill="#d1d5db" stroke="#9ca3af" stroke-width="2"/>
+                </svg>
+            </div>
+            <h1 class="yoqimli-title">Yoqimli ishtaha</h1>
+            <p class="yoqimli-subtitle">Bugungi lazzatni his qiling!</p>
+            <button class="btn btn-yoqimli" onclick="closeYoqimliIshtaha()">Bosh sahifa</button>
         </div>
     </div>
 
@@ -131,7 +149,7 @@
                     <span class="featured-star">⭐</span>
                 </div>
                 <div class="featured-img" id="featured-img">
-                    <img src="images/high-quality/toshkent-oshi.png" alt="Tavsiya">
+                    <img src="images/toshkent-oshi.png" alt="Tavsiya">
                 </div>
             </div>
 
@@ -144,7 +162,7 @@
 
             <!-- Recipe Grid -->
             <div class="food-grid" id="food-grid">
-                <div class="food-card"><img src="images/high-quality/toshkent-oshi.png" alt="Toshkent oshi"><div class="food-card-name">Toshkent oshi</div></div>
+                <div class="food-card"><img src="images/toshkent-oshi.png" alt="Toshkent oshi"><div class="food-card-name">Toshkent oshi</div></div>
                 <div class="food-card"><img src="images/andijon-osh.png" alt="Andijon oshi"><div class="food-card-name">Andijon oshi</div></div>
                 <div class="food-card"><img src="images/dimlama.png" alt="Dimlama"><div class="food-card-name">Dimlama</div></div>
                 <div class="food-card"><img src="images/qazonkabob.png" alt="Qazon Kabob"><div class="food-card-name">Qazon Kabob</div></div>
@@ -168,6 +186,7 @@
         </div>
     </div>
 
+    <script src="recipes-data.js?v=2"></script>
     <script src="app.js?v=2"></script>
 </body>
 </html>

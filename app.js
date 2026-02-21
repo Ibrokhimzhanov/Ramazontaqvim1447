@@ -185,7 +185,7 @@ function goToMain() {
 // File naming: lowercase, spaces → hyphen. Example: "Toshkent oshi" → "toshkent-oshi.jpg"
 const foodData = {
     saharlik: [
-        { name: 'Toshkent oshi', img: 'images/high-quality/toshkent-oshi.png' },
+        { name: 'Toshkent oshi', img: 'images/toshkent-oshi.png' },
         { name: 'Andijon oshi', img: 'images/andijon-osh.png' },
         { name: 'Dimlama', img: 'images/dimlama.png' },
         { name: 'Qazon Kabob', img: 'images/qazonkabob.png' },
@@ -210,17 +210,16 @@ const foodData = {
         { name: 'Mastava', img: 'images/mastava.png' },
         { name: 'Chechevitsa turkcha', img: 'images/chechevitsa-turkcha.png' },
         { name: "Qaynatma sho'rva", img: "images/qaynatma-sho'rva.png" },
-        { name: 'Frikadelki', img: 'images/frikadelki.png' },
+        { name: 'Borsh', img: 'images/borsh.png' },
         { name: 'Kuk-si', img: 'images/kuksi.png' },
         { name: "Lag'mon", img: "images/lag'mon.png" },
-        { name: 'Dolma shorva', img: 'images/dolma-shorva.png' },
+        { name: 'Bulyonli Dolma', img: 'images/bulyonli-dolma.png' },
         { name: 'Somsa', img: 'images/somsa.png' },
         { name: 'OLOT Somsa', img: 'images/olot-somsa.png' },
         { name: 'Gumma', img: 'images/gumma.png' },
         { name: 'Moshkichir', img: 'images/moshkichir.png' },
-        { name: 'Karam shorva', img: 'images/karam-shorva.png' },
+        { name: 'Ukraincha Shi', img: 'images/ukraincha-shi.png' },
         { name: 'Tuxum barak', img: 'images/tuxum-barak.png' },
-        { name: 'Kavartak', img: 'images/kavartak.png' },
         { name: 'Qurtoba', img: 'images/qurtoba.png' },
         { name: 'Moshhorda', img: 'images/moshhorda.png' },
         { name: 'Turk Menemeni', img: 'images/turk-menemeni.png' },
@@ -230,20 +229,20 @@ const foodData = {
     ],
     gazaklar: [
         { name: 'Achiq-chuchuk', img: 'images/acchiq-chuchuk.png' },
-        { name: 'Bahor salat', img: 'images/bahor-salat.png' },
         { name: 'Svejiy salat', img: 'images/svejiy-salat.png' },
         { name: 'Olivia', img: 'images/olivia.png' },
         { name: 'Tovuqli sezar', img: 'images/tovuqli-sezar.png' },
-        { name: "Suzma-ko'kat", img: "images/suzma-ko'kat.png" },
-        { name: 'Loviya salat', img: 'images/loviya-salat.png' },
-        { name: 'Turpli salat', img: 'images/turpli-salat.png' },
+        { name: 'Suzma salat', img: 'images/suzma-salat.png' },
+        { name: 'Toshkent salatlari', img: 'images/toshkent-salatlari.png' },
+        { name: 'Qarsildoq Baqlajon', img: 'images/qarsildoq-baqlajon.png' },
         { name: 'Vinegret', img: 'images/vinegret.png' },
-        { name: 'Qizilcha', img: 'images/qizilcha.png' },
-        { name: "Go'shtli salat", img: "images/go'shtli-salat.png" },
+        { name: 'Horovatz', img: 'images/horovatz.png' },
+        { name: 'Lazzat', img: 'images/lazzat.png' },
         { name: 'Amerikanskiy', img: 'images/amerikanskiy.png' },
         { name: 'Fransuzkiy', img: 'images/fransuzkiy.png' },
         { name: 'Grekcha salat', img: 'images/grekcha-salat.png' },
         { name: 'Kapriz', img: 'images/kapriz.png' },
+        { name: 'Humus', img: 'images/humus.png' },
     ],
 };
 
@@ -313,437 +312,7 @@ function switchTab(tab, btn) {
     updateFeatured(tab);
 }
 
-// ========== Recipe Data ==========
-const recipes = {
-    'Toshkent oshi': {
-        ingredients: [
-            { name: 'Guruch', amount: '1 kg' },
-            { name: "Go'sht", amount: '800 gr - 1 kg' },
-            { name: 'Sabzi', amount: '1-1.2 kg' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: "Yog'", amount: '250-300 ml' },
-            { name: 'Dumba', amount: '100 gr' },
-            { name: "No'xat", amount: '100-150 gr' },
-            { name: 'Mayiz', amount: '50 gr' },
-            { name: 'Zira, tuz, murch va azoq zirk (barbaris)', amount: '' },
-            { name: "Suv: Qaynoq suv (guruchni yopishi uchun)", amount: '' },
-        ],
-        steps: [
-            "Zirvakni tayyorlash: Qozonda yog'ni qizdirib, avval piyozni och tillarang bo'lguncha qovuring. Keyin go'shtni solib, uning sirti qizarguncha qovurishda davom eting.",
-            "Sabzi va no'xat: Sabzini solib, biroz yumshaguncha qovuring. So'ngra mahsulotlar ko'rilguncha suv quyib, isitilgan no'xatni qo'shing. Zirvakni past olovda taxminan 40-50 daqiqa qaynatib.",
-            "Mayiz va ziravotlar: Pishishiga 15 daqiqa qolganda mayiz va ziravotlarni qo'shing.",
-            "Guruch solish: Yuvilgan guruchni zirvak ustiga tekis yoyib soling. Guruch ustidan taxminan 1-1.5 sm balandlikda qaynoq suv quying.",
-            "Damlash: Guruch suvni to'liq shimib bo'lgach, olovni eng pastga pasaytirib, qozonni 20-25 daqiqaga damlab qo'ying.",
-            "Toshkent oshi odatda go'shti ustiga qo'yib, qazi, kashnich va murch bilan bezatilgan holda tortiladi.",
-        ],
-    },
-    'Andijon oshi': {
-        ingredients: [
-            { name: 'Guruch (devzira)', amount: '700 g' },
-            { name: "Mol go'shti", amount: '500 g' },
-            { name: 'Sabzi', amount: '400 g' },
-            { name: 'Piyoz', amount: '3 dona' },
-            { name: "O'simlik yog'i", amount: '150 ml' },
-            { name: 'Tuz', amount: "ta'bga" },
-            { name: 'Zira', amount: '1 osh qoshiq' },
-        ],
-        steps: [
-            "Qozonga yog' solib qizdiramiz, piyozni to'g'rab qovuramiz.",
-            "Go'shtni solib, oltin rangga kelguncha qovuramiz.",
-            "Sabzini ingichka qilib to'g'rab qo'shamiz.",
-            "Suv, tuz, zira qo'shib 30 daqiqa qaynatamiz.",
-            "Guruchni yuvib ustiga solamiz, past olovda pishamiz.",
-            "Guruch tayyor bo'lgach yig'ib 20 daqiqa dam beramiz.",
-        ],
-    },
-    'Dimlama': {
-        ingredients: [
-            { name: "Mol go'shti", amount: '700 g' },
-            { name: 'Kartoshka', amount: '500 g' },
-            { name: 'Sabzi', amount: '300 g' },
-            { name: 'Karam', amount: '300 g' },
-            { name: 'Piyoz', amount: '3 dona' },
-            { name: 'Pomidor', amount: '3 dona' },
-            { name: 'Bolgar qalampiri', amount: '2 dona' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Qozonning tubiga yog' surkaymiz. Go'shtni yirik bo'lib solamiz.",
-            "Ustiga piyoz halqalarini qo'shamiz.",
-            "Sabzi, kartoshka, karam, pomidor, qalampirni qatlam-qatlam qilib teramiz.",
-            "Tuz va zira sepamiz. Ozgina suv qo'shamiz.",
-            "Qopqog'ini mahkam yopib, past olovda 2-2.5 soat dimlaymiz.",
-            "Tayyor bo'lgach, aralashtirib suzamiz.",
-        ],
-    },
-    'Qazon Kabob': {
-        ingredients: [
-            { name: "Mol go'shti", amount: '1 kg' },
-            { name: 'Piyoz', amount: '4 dona' },
-            { name: 'Kartoshka', amount: '500 g' },
-            { name: "O'simlik yog'i", amount: '100 ml' },
-            { name: 'Tuz, murch', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni yirik bo'laklarga to'g'raymiz.",
-            "Qozonga yog' solib, go'shtni qovuramiz.",
-            "Piyozni halqa qilib solamiz, birga qovuramiz.",
-            "Suv qo'shib, 1 soat past olovda pishamiz.",
-            "Kartoshkani yirik to'g'rab ustiga solamiz.",
-            "Yana 30 daqiqa dimlab pishamiz.",
-        ],
-    },
-    'Qovurdoq': {
-        ingredients: [
-            { name: "Go'sht", amount: '500 g' },
-            { name: 'Kartoshka', amount: '400 g' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: "O'simlik yog'i", amount: '100 ml' },
-            { name: 'Tuz, qalampir', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni mayda bo'laklarga to'g'raymiz.",
-            "Qozonga yog' solib go'shtni qovuramiz.",
-            "Piyozni to'g'rab qo'shamiz.",
-            "Kartoshkani kubik qilib to'g'rab solamiz.",
-            "Tuz, qalampir sepib, aralashtirib 20 daqiqa qovuramiz.",
-        ],
-    },
-    'Norin': {
-        ingredients: [
-            { name: "Ot go'shti", amount: '500 g' },
-            { name: 'Xamir (tagliatelle)', amount: '400 g' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Tuz, murch', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni butunligicha suvda qaynatamiz (1.5 soat).",
-            "Xamirni yupqa yoyib, kesib qaynatamiz.",
-            "Go'shtni maydalab, xamir bilan aralashtiramiz.",
-            "Piyozni to'g'rab ustiga sepamiz. Qa'ynatmadan oz-oz qo'shib suzamiz.",
-        ],
-    },
-    'Manti': {
-        ingredients: [
-            { name: 'Un', amount: '500 g' },
-            { name: "Mol go'shti", amount: '400 g' },
-            { name: 'Piyoz', amount: '4 dona' },
-            { name: "Dumba yog'i", amount: '100 g' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Undan xamir tayyorlaymiz, 30 daqiqa dam beramiz.",
-            "Go'sht va piyozni maydalab, tuz, zira qo'shib qiyma tayyorlaymiz.",
-            "Xamirni yoyib, to'rtburchak qilib kesamiz.",
-            "Har biriga qiyma solib, manti shaklida o'raymiz.",
-            "Bug'da 45 daqiqa pishamiz.",
-        ],
-    },
-    'Honim': {
-        ingredients: [
-            { name: 'Un', amount: '400 g' },
-            { name: 'Kartoshka', amount: '500 g' },
-            { name: 'Piyoz', amount: '3 dona' },
-            { name: "Go'sht qiymasi", amount: '300 g' },
-            { name: 'Tuz', amount: "ta'bga" },
-        ],
-        steps: [
-            "Xamir tayyorlab, yupqa yoyamiz.",
-            "Kartoshka va piyozni to'g'rab, qiyma bilan aralashtiramiz.",
-            "Xamir ustiga qiymani yoyib, rulet shaklida o'raymiz.",
-            "Bug'da 40 daqiqa pishamiz.",
-            "Bo'laklarga kesib suzamiz.",
-        ],
-    },
-    'Shovla': {
-        ingredients: [
-            { name: 'Guruch', amount: '400 g' },
-            { name: "Go'sht", amount: '400 g' },
-            { name: 'Sabzi', amount: '200 g' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni to'g'rab, yog'da qovuramiz.",
-            "Piyoz va sabzini qo'shamiz.",
-            "Suv quyib qaynatamiz.",
-            "Guruchni yuvib solamiz.",
-            "Suyuqroq qilib, sho'rva holatida pishamiz.",
-        ],
-    },
-    'Chuchvara': {
-        ingredients: [
-            { name: 'Un', amount: '400 g' },
-            { name: "Go'sht qiymasi", amount: '300 g' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Tuz, murch', amount: "ta'bga" },
-        ],
-        steps: [
-            "Undan qattiq xamir tayyorlaymiz.",
-            "Go'sht va piyozdan qiyma tayyorlaymiz.",
-            "Xamirni yupqa yoyib, kichik doira qilib kesamiz.",
-            "Har biriga oz qiyma solib, uchburchak shaklida yopamiz.",
-            "Qaynagan suvda 7-10 daqiqa qaynatamiz.",
-        ],
-    },
-    'Bifshteks': {
-        ingredients: [
-            { name: "Mol go'shti (file)", amount: '400 g' },
-            { name: "Sariyog'", amount: '50 g' },
-            { name: 'Tuz, qora murch', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni 2 sm qalinlikda kesamiz.",
-            "Tuz va murch sepamiz.",
-            "Sariyog'ni eritib, kuchli olovda har tomonini 3 daqiqadan qovuramiz.",
-            "5 daqiqa dam berib suzamiz.",
-        ],
-    },
-    'Manpar': {
-        ingredients: [
-            { name: 'Un', amount: '300 g' },
-            { name: "Go'sht", amount: '300 g' },
-            { name: 'Kartoshka', amount: '200 g' },
-            { name: 'Pomidor', amount: '2 dona' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Tuz', amount: "ta'bga" },
-        ],
-        steps: [
-            "Xamir tayyorlab, kichik bo'laklarga uzamiz.",
-            "Go'shtni to'g'rab qovuramiz, sabzavotlarni qo'shamiz.",
-            "Suv quyib sho'rva qaynatamiz.",
-            "Xamir bo'laklarini sho'rvaga solib 10 daqiqa pishamiz.",
-        ],
-    },
-    'Befstroganov': {
-        ingredients: [
-            { name: "Mol go'shti", amount: '500 g' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Smetana', amount: '200 g' },
-            { name: 'Un', amount: '1 osh qoshiq' },
-            { name: "Sariyog'", amount: '50 g' },
-            { name: 'Tuz, murch', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni ingichka uzun bo'laklarga to'g'raymiz.",
-            "Sariyog'da kuchli olovda qovuramiz.",
-            "Piyozni to'g'rab qo'shamiz.",
-            "Un sepib aralashtiramiz, smetana qo'shamiz.",
-            "Past olovda 15 daqiqa pishamiz.",
-        ],
-    },
-    'Koza-kifta Dimlama': {
-        ingredients: [
-            { name: "Go'sht qiymasi", amount: '500 g' },
-            { name: 'Kartoshka', amount: '500 g' },
-            { name: 'Pomidor', amount: '3 dona' },
-            { name: 'Piyoz', amount: '3 dona' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Qiymadan koptokcha shaklida kiftalar yasaymiz.",
-            "Qozon tubiga piyoz, pomidor teramiz.",
-            "Kiftalarni ustiga joylashtiramiz.",
-            "Kartoshkani qo'shib, tuz sepamiz.",
-            "Past olovda 1.5 soat dimlaymiz.",
-        ],
-    },
-    'Zharkof': {
-        ingredients: [
-            { name: "Mol go'shti", amount: '500 g' },
-            { name: 'Kartoshka', amount: '500 g' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Pomidor pastasi', amount: '2 osh qoshiq' },
-            { name: 'Tuz, dafna bargi', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni bo'laklarga to'g'rab qovuramiz.",
-            "Piyozni qo'shib, birga qovuramiz.",
-            "Pomidor pastasi va suv qo'shamiz.",
-            "Kartoshkani yirik to'g'rab solamiz.",
-            "Past olovda 1 soat dimlaymiz.",
-        ],
-    },
-    'Jizz': {
-        ingredients: [
-            { name: "Qo'y go'shti", amount: '500 g' },
-            { name: "Dumba yog'i", amount: '200 g' },
-            { name: 'Piyoz', amount: '3 dona' },
-            { name: 'Tuz', amount: "ta'bga" },
-        ],
-        steps: [
-            "Dumba yog'ini eritamiz.",
-            "Go'shtni mayda to'g'rab, qizigan yog'da qovuramiz.",
-            "Piyozni halqa qilib qo'shamiz.",
-            "Tuz sepib, qarsillagunicha qovuramiz.",
-        ],
-    },
-    "Uyg'ur Lagmon": {
-        ingredients: [
-            { name: 'Lagmon xamiri', amount: '400 g' },
-            { name: "Go'sht", amount: '300 g' },
-            { name: 'Sabzi', amount: '200 g' },
-            { name: 'Bolgar qalampiri', amount: '2 dona' },
-            { name: 'Pomidor', amount: '2 dona' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Xamirni tayyorlab, cho'zib yoki qo'lda tortib lagmon yasaymiz.",
-            "Go'shtni to'g'rab qovuramiz.",
-            "Sabzavotlarni qo'shib vayjini tayyorlaymiz.",
-            "Lagmonni qaynatib, vayjini ustiga quyamiz.",
-        ],
-    },
-    'Tova-Manti': {
-        ingredients: [
-            { name: 'Un', amount: '500 g' },
-            { name: "Go'sht qiymasi", amount: '400 g' },
-            { name: 'Piyoz', amount: '4 dona' },
-            { name: "O'simlik yog'i", amount: '100 ml' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Mantilarni odatdagidek tayyorlaymiz.",
-            "Tovaga yog' solib qizdiramiz.",
-            "Mantilarni tovaga terib, tubini qizartiramiz.",
-            "Ozgina suv quyib, qopqog'ini yopib 20 daqiqa pishamiz.",
-        ],
-    },
-    'Kotleta po Kiyevski': {
-        ingredients: [
-            { name: "Tovuq filesi", amount: '4 dona' },
-            { name: "Sariyog'", amount: '100 g' },
-            { name: 'Un', amount: '100 g' },
-            { name: 'Tuxum', amount: '2 dona' },
-            { name: 'Non uvog\'i', amount: '150 g' },
-            { name: 'Tuz, murch', amount: "ta'bga" },
-        ],
-        steps: [
-            "Fileni ochib, yupqalab uramiz. Ichiga sariyog' bo'lagini solamiz.",
-            "Rulet shaklida o'rab, sovutgichda 30 daqiqa ushlab turamiz.",
-            "Un, tuxum, non uvog'iga aylantrib qovuramiz.",
-            "Yog'da chuqur qovuramiz yoki 180°C pechda 25 daqiqa pishamiz.",
-        ],
-    },
-    'Chahonbili': {
-        ingredients: [
-            { name: 'Tovuq', amount: '1 kg' },
-            { name: 'Pomidor', amount: '5 dona' },
-            { name: 'Piyoz', amount: '3 dona' },
-            { name: "Sarimsoq", amount: '4 bo\'lak' },
-            { name: "Ko'katlar", amount: 'bir tutam' },
-            { name: 'Tuz, murch', amount: "ta'bga" },
-        ],
-        steps: [
-            "Tovuqni bo'laklarga bo'lib qovuramiz.",
-            "Piyozni to'g'rab qo'shamiz.",
-            "Pomidorni maydalab solamiz.",
-            "Tuz, murch, sarimsoq qo'shib 30 daqiqa past olovda pishamiz.",
-            "Ko'katlar sepib suzamiz.",
-        ],
-    },
-    // Iftorlik recipes
-    'Mastava': {
-        ingredients: [
-            { name: "Go'sht", amount: '400 g' },
-            { name: 'Guruch', amount: '150 g' },
-            { name: 'Sabzi', amount: '200 g' },
-            { name: 'Kartoshka', amount: '200 g' },
-            { name: 'Pomidor', amount: '2 dona' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Go'shtni bo'laklarga to'g'rab qaynatamiz.",
-            "Piyoz va sabzini to'g'rab qo'shamiz.",
-            "Kartoshka va pomidorni qo'shamiz.",
-            "Guruchni yuvib solamiz.",
-            "Past olovda 40 daqiqa pishamiz. Suzma bilan suzamiz.",
-        ],
-    },
-    'Somsa': {
-        ingredients: [
-            { name: 'Un', amount: '500 g' },
-            { name: "Go'sht", amount: '400 g' },
-            { name: 'Piyoz', amount: '5 dona' },
-            { name: "Dumba yog'i", amount: '100 g' },
-            { name: 'Tuz, zira', amount: "ta'bga" },
-        ],
-        steps: [
-            "Undan qatlamali xamir tayyorlaymiz.",
-            "Go'sht, piyoz va yog'dan qiyma tayyorlaymiz.",
-            "Xamirni yoyib, qiyma solib somsalarni yasaymiz.",
-            "Tandirda yoki 200°C pechda 25-30 daqiqa pishamiz.",
-        ],
-    },
-    "Lag'mon": {
-        ingredients: [
-            { name: 'Lagmon xamiri', amount: '400 g' },
-            { name: "Go'sht", amount: '300 g' },
-            { name: 'Sabzi, turp', amount: '200 g' },
-            { name: 'Bolgar qalampiri', amount: '2 dona' },
-            { name: 'Pomidor', amount: '2 dona' },
-            { name: 'Piyoz', amount: '2 dona' },
-        ],
-        steps: [
-            "Go'shtni to'g'rab qovuramiz.",
-            "Sabzavotlarni qo'shib vayjini tayyorlaymiz.",
-            "Suv quyib sho'rva qaynatamiz.",
-            "Lagmon xamirini cho'zib qaynatamiz.",
-            "Lagmon ustiga vayji quyib suzamiz.",
-        ],
-    },
-    'Moshkichir': {
-        ingredients: [
-            { name: 'Mosh', amount: '300 g' },
-            { name: 'Guruch', amount: '200 g' },
-            { name: "Go'sht", amount: '300 g' },
-            { name: 'Sabzi', amount: '200 g' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: "O'simlik yog'i", amount: '100 ml' },
-        ],
-        steps: [
-            "Go'shtni to'g'rab, yog'da qovuramiz.",
-            "Piyoz va sabzini qo'shamiz.",
-            "Moshni yuvib solamiz, suv quyamiz.",
-            "30 daqiqadan so'ng guruchni qo'shamiz.",
-            "Past olovda tayyor bo'lguncha pishamiz.",
-        ],
-    },
-    // Gazaklar
-    'Achiq-chuchuk': {
-        ingredients: [
-            { name: 'Pomidor', amount: '4 dona' },
-            { name: 'Piyoz', amount: '2 dona' },
-            { name: 'Achchiq qalampir', amount: '1 dona' },
-            { name: 'Tuz', amount: "ta'bga" },
-        ],
-        steps: [
-            "Pomidorni yarim halqa qilib to'g'raymiz.",
-            "Piyozni ingichka halqalarga to'g'raymiz.",
-            "Achchiq qalampirni mayda to'g'raymiz.",
-            "Hammasini aralashtirib, tuz sepamiz.",
-        ],
-    },
-    'Olivia': {
-        ingredients: [
-            { name: 'Kartoshka', amount: '3 dona' },
-            { name: "Qaynatilgan go'sht", amount: '200 g' },
-            { name: 'Tuxum', amount: '3 dona' },
-            { name: "Bodring (tuzlangan)", amount: '3 dona' },
-            { name: "Ko'k no'xat", amount: '200 g' },
-            { name: 'Mayanez', amount: '150 g' },
-            { name: 'Tuz', amount: "ta'bga" },
-        ],
-        steps: [
-            "Kartoshka va tuxumni qaynatib, kubik qilib to'g'raymiz.",
-            "Go'sht va bodringni kubik qilib to'g'raymiz.",
-            "Hammasini idishga solib, no'xatni qo'shamiz.",
-            "Mayanez va tuz bilan aralashtiramiz.",
-        ],
-    },
-};
+// Recipes loaded from recipes-data.js
 
 // Open recipe screen
 function openRecipe(name, img) {
@@ -758,16 +327,22 @@ function openRecipe(name, img) {
     if (recipe) {
         for (var i = 0; i < recipe.ingredients.length; i++) {
             var ing = recipe.ingredients[i];
-            ingredientHtml += '<div class="ingredient-row">';
-            ingredientHtml += '<span class="ingredient-name">' + ing.name + '</span>';
-            ingredientHtml += '<span class="ingredient-amount">' + ing.amount + '</span>';
-            ingredientHtml += '</div>';
+            if (ing.section) {
+                ingredientHtml += '<div class="ingredient-section-header">' + ing.section + '</div>';
+            } else {
+                ingredientHtml += '<div class="ingredient-row">';
+                ingredientHtml += '<span class="ingredient-name">' + ing.name + '</span>';
+                ingredientHtml += '<span class="ingredient-amount">' + (ing.amount || '') + '</span>';
+                ingredientHtml += '</div>';
+            }
         }
+        var stepNum = 1;
         for (var j = 0; j < recipe.steps.length; j++) {
             stepsHtml += '<div class="step-card">';
-            stepsHtml += '<div class="step-number">' + (j + 1) + '</div>';
+            stepsHtml += '<div class="step-number">' + stepNum + '</div>';
             stepsHtml += '<div class="step-text">' + recipe.steps[j] + '</div>';
             stepsHtml += '</div>';
+            stepNum++;
         }
     } else {
         ingredientHtml = '<div class="ingredient-row"><span class="ingredient-name">Retsept tez orada qo\'shiladi</span><span class="ingredient-amount"></span></div>';
@@ -785,6 +360,17 @@ function openRecipe(name, img) {
 // Close recipe screen
 function closeRecipe() {
     document.getElementById('screen-recipe').style.display = 'none';
+}
+
+// Show Yoqimli Ishtaha screen
+function showYoqimliIshtaha() {
+    document.getElementById('screen-recipe').style.display = 'none';
+    document.getElementById('screen-yoqimli').style.display = 'block';
+}
+
+// Close Yoqimli Ishtaha and go back to main
+function closeYoqimliIshtaha() {
+    document.getElementById('screen-yoqimli').style.display = 'none';
 }
 
 // Reset app (temp)
