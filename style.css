@@ -529,12 +529,6 @@ body {
     image-rendering: -webkit-optimize-contrast;
     background: #e5e7eb;
     min-height: 180px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.featured-img img.loaded {
-    opacity: 1;
 }
 
 /* Tabs */
@@ -597,12 +591,6 @@ body {
     object-fit: cover;
     image-rendering: -webkit-optimize-contrast;
     background: #e5e7eb;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.food-card img.loaded {
-    opacity: 1;
 }
 
 .food-card-name {
