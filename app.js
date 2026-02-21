@@ -179,6 +179,13 @@ function confirmPayment() {
     });
 }
 
+// Close mini app
+function closeApp() {
+    if (tg && tg.close) {
+        tg.close();
+    }
+}
+
 // Greeting screen
 function showGreeting(name) {
     const displayName = name.charAt(0).toUpperCase() + name.slice(1);

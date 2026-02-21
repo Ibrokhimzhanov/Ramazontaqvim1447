@@ -657,18 +657,16 @@ body {
     font-weight: 400 !important;
 }
 
-.payment-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid #e5e7eb;
-    border-top: 3px solid var(--primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 16px;
+.payment-sent-icon {
+    font-size: 56px;
+    margin-bottom: 12px;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+.btn-close-app {
+    margin-top: 20px;
+    max-width: 340px;
+    width: 100%;
+    padding: 14px;
 }
 
 /* ========== Food Screen (Women) ========== */
