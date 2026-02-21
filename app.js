@@ -174,9 +174,35 @@ function confirmPayment() {
     fetch('https://api.telegram.org/bot' + botToken + '/sendPhoto', {
         method: 'POST',
         body: formData
+    }).then(function() {
+        // Start polling for admin approval
+        startPaymentPolling(userId, botToken);
     }).catch(function(err) {
         console.error('Payment notify error:', err);
     });
+}
+
+// Poll every 3s — check if bot pinned "PAID_CONFIRMED" message
+function startPaymentPolling(userId, botToken) {
+    var pollTimer = setInterval(function() {
+        fetch('https://api.telegram.org/bot' + botToken + '/getChat?chat_id=' + userId)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.ok && data.result && data.result.pinned_message &&
+                    data.result.pinned_message.text === 'PAID_CONFIRMED') {
+                    // Admin approved!
+                    clearInterval(pollTimer);
+                    var saved = JSON.parse(localStorage.getItem('ramazon_user') || '{}');
+                    saved.paid = true;
+                    localStorage.setItem('ramazon_user', JSON.stringify(saved));
+
+                    // Go to recipes
+                    showScreen('screen-main');
+                    loadFoodScreen();
+                    setTimeout(function() { loadFoodGrid(currentTab); updateFeatured(currentTab); }, 100);
+                }
+            }).catch(function() {});
+    }, 3000);
 }
 
 
