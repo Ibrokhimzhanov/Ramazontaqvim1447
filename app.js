@@ -246,7 +246,7 @@ function updateFeatured(tab) {
     featuredEl.setAttribute('data-name', items[idx].name);
     featuredEl.setAttribute('data-img', items[idx].img);
     featuredEl.style.cursor = 'pointer';
-    featuredEl.innerHTML = '<img src="' + items[idx].img + '?v=4" alt="' + items[idx].name + '" onload="this.classList.add(\'loaded\')">';
+    featuredEl.innerHTML = '<img src="' + items[idx].img + '?v=5" alt="' + items[idx].name + '" onload="this.classList.add(\'loaded\')">';
 }
 
 function loadFoodScreen() {
@@ -266,7 +266,7 @@ function preloadAllImages() {
     var all = [].concat(foodData.saharlik, foodData.iftorlik, foodData.gazaklar);
     for (var i = 0; i < all.length; i++) {
         var img = new Image();
-        img.src = all[i].img + '?v=4';
+        img.src = all[i].img + '?v=5';
     }
     // Pre-build grid caches so tab switching is instant
     gridCache['saharlik'] = buildFoodGrid('saharlik');
@@ -282,7 +282,7 @@ function buildFoodGrid(tab) {
     var html = '';
     for (var i = 0; i < items.length; i++) {
         html += '<div class="food-card" data-name="' + items[i].name.replace(/"/g, '&quot;') + '" data-img="' + items[i].img.replace(/"/g, '&quot;') + '">';
-        html += '<img src="' + items[i].img + '?v=4" alt="' + items[i].name + '" onload="this.classList.add(\'loaded\')">';
+        html += '<img src="' + items[i].img + '?v=5" alt="' + items[i].name + '" onload="this.classList.add(\'loaded\')">';
         html += '<div class="food-card-name">' + items[i].name + '</div>';
         html += '</div>';
     }
@@ -312,7 +312,7 @@ function switchTab(tab, btn) {
 // Open recipe screen
 function openRecipe(name, img) {
     var screen = document.getElementById('screen-recipe');
-    document.getElementById('recipe-img').src = img + '?v=4';
+    document.getElementById('recipe-img').src = img + '?v=5';
     document.getElementById('recipe-title').textContent = name + 'ni tayyorlash uslubi';
 
     var recipe = recipes[name];
