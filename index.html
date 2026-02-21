@@ -15,36 +15,14 @@
             <h1>Ramazon Taqvim</h1>
             <h2>1447</h2>
             <p class="welcome-text">Muborak Ramazon oyiga tayyormisiz?<br>30 kunlik taqvim va milliy taomlar retseptlari</p>
-            <button class="btn btn-primary" onclick="showScreen('screen-phone')">Boshlash</button>
-        </div>
-    </div>
-
-    <!-- Screen 2: Phone Number -->
-    <div id="screen-phone" class="screen">
-        <div class="form-container">
-            <button class="btn-back" onclick="showScreen('screen-welcome')">←</button>
-            <div class="form-icon">📱</div>
-            <h2>Telefon raqamingiz</h2>
-            <p class="form-hint">Raqamingizni kiriting</p>
-            <div class="phone-input-wrapper">
-                <span class="phone-prefix">+998</span>
-                <input
-                    type="tel"
-                    id="phone-input"
-                    placeholder="90 123 45 67"
-                    maxlength="12"
-                    oninput="formatPhone(this); validatePhone()"
-                >
-            </div>
-            <div id="phone-error" class="error-text"></div>
-            <button class="btn btn-primary" id="btn-phone-next" disabled onclick="showScreen('screen-gender')">Davom etish</button>
+            <button class="btn btn-primary" onclick="showScreen('screen-gender')">Boshlash</button>
         </div>
     </div>
 
     <!-- Screen 3: Gender Selection -->
     <div id="screen-gender" class="screen">
         <div class="form-container">
-            <button class="btn-back" onclick="showScreen('screen-phone')">←</button>
+            <button class="btn-back" onclick="showScreen('screen-welcome')">←</button>
             <h2>Ma'lumotlaringiz</h2>
             <p class="form-hint">Ismingiz va jinsingizni tanlang</p>
 
