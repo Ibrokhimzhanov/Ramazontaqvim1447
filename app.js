@@ -265,7 +265,7 @@ function updateFeatured(tab) {
     featuredEl.setAttribute('data-name', items[idx].name);
     featuredEl.setAttribute('data-img', items[idx].img);
     featuredEl.style.cursor = 'pointer';
-    featuredEl.innerHTML = '<img src="' + items[idx].img + '?v=4" alt="' + items[idx].name + '">';
+    featuredEl.innerHTML = '<img src="' + items[idx].img + '?v=4" alt="' + items[idx].name + '" onload="this.classList.add(\'loaded\')">';
 }
 
 function loadFoodScreen() {
@@ -301,7 +301,7 @@ function buildFoodGrid(tab) {
     var html = '';
     for (var i = 0; i < items.length; i++) {
         html += '<div class="food-card" data-name="' + items[i].name.replace(/"/g, '&quot;') + '" data-img="' + items[i].img.replace(/"/g, '&quot;') + '">';
-        html += '<img src="' + items[i].img + '?v=4" alt="' + items[i].name + '">';
+        html += '<img src="' + items[i].img + '?v=4" alt="' + items[i].name + '" onload="this.classList.add(\'loaded\')">';
         html += '<div class="food-card-name">' + items[i].name + '</div>';
         html += '</div>';
     }
