@@ -115,17 +115,47 @@ function copyCard() {
     }
 }
 
-// Confirm payment — send data to bot via Telegram WebApp
+// Confirm payment — notify admin via Bot API (app stays open)
 function confirmPayment() {
     var btn = document.getElementById('btn-confirm-payment');
     var status = document.getElementById('payment-status');
     btn.style.display = 'none';
     status.style.display = 'block';
 
-    // Send payment confirmation to bot
-    if (tg && tg.sendData) {
-        tg.sendData(JSON.stringify({ action: 'confirm_payment' }));
-    }
+    // Get user info from Telegram WebApp
+    var user = (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) || {};
+    var userId = user.id || 0;
+    var firstName = user.first_name || '';
+    var username = user.username ? '@' + user.username : "yo'q";
+
+    // Send notification to admin via Bot API
+    var botToken = '7761508992:AAHXQqbG82100rNRa_M-2OWVmyfIH7B-UOY';
+    var adminId = 5676160778;
+    var text = "🔔 <b>Yangi to'lov so'rovi!</b>\n\n" +
+        "👤 Ism: " + firstName + "\n" +
+        "🆔 ID: <code>" + userId + "</code>\n" +
+        "📧 Username: " + username + "\n\n" +
+        "Tasdiqlaysizmi?";
+
+    var replyMarkup = JSON.stringify({
+        inline_keyboard: [[
+            { text: '✅ Tasdiqlash', callback_data: 'approve_' + userId },
+            { text: '❌ Rad etish', callback_data: 'reject_' + userId }
+        ]]
+    });
+
+    fetch('https://api.telegram.org/bot' + botToken + '/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: adminId,
+            text: text,
+            parse_mode: 'HTML',
+            reply_markup: replyMarkup
+        })
+    }).catch(function(err) {
+        console.error('Payment notify error:', err);
+    });
 }
 
 // Greeting screen
