@@ -1020,18 +1020,3 @@ body {
     padding: 8px 0 4px;
 }
 
-/* Temp Reset Button */
-.btn-reset {
-    position: absolute;
-    top: calc(12px + var(--safe-top));
-    right: 12px;
-    background: #EF4444;
-    color: #fff;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    z-index: 10;
-}
