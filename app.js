@@ -317,7 +317,7 @@ function switchTab(tab, btn) {
 // Open recipe screen
 function openRecipe(name, img) {
     var screen = document.getElementById('screen-recipe');
-    document.getElementById('recipe-img').src = img;
+    document.getElementById('recipe-img').src = img + '?v=3';
     document.getElementById('recipe-title').textContent = name + 'ni tayyorlash uslubi';
 
     var recipe = recipes[name];
