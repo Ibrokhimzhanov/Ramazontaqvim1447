@@ -575,11 +575,68 @@ body {
     margin-bottom: 16px;
 }
 
+.upload-area {
+    width: 100%;
+    max-width: 340px;
+    min-height: 160px;
+    border: 2px dashed #d1d5db;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 16px;
+    background: #fff;
+    transition: all 0.2s;
+    overflow: hidden;
+}
+
+.upload-area:active {
+    border-color: var(--primary);
+    background: var(--bg-secondary);
+}
+
+#upload-placeholder {
+    text-align: center;
+    padding: 20px;
+}
+
+.upload-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+#upload-placeholder p {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.upload-sub {
+    font-size: 12px !important;
+    color: var(--text-secondary) !important;
+    font-weight: 400 !important;
+}
+
+.check-preview {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 14px;
+}
+
 .btn-payment {
     width: 100%;
     max-width: 340px;
     padding: 16px;
     font-size: 16px;
+}
+
+.btn-payment:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .payment-status {

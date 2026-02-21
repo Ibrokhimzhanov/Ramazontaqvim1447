@@ -75,8 +75,19 @@
                 </div>
             </div>
 
-            <p class="payment-hint">To'lovni amalga oshirgach, quyidagi tugmani bosing</p>
-            <button class="btn btn-primary btn-payment" id="btn-confirm-payment" onclick="confirmPayment()">✅ To'lovni tasdiqlayman</button>
+            <p class="payment-hint">To'lov chekini yuklang va tasdiqlang</p>
+
+            <div class="upload-area" id="upload-area" onclick="document.getElementById('check-input').click()">
+                <div id="upload-placeholder">
+                    <div class="upload-icon">📸</div>
+                    <p>To'lov chekini yuklash</p>
+                    <p class="upload-sub">Rasmni bosing yoki tanlang</p>
+                </div>
+                <img id="check-preview" class="check-preview" style="display:none">
+            </div>
+            <input type="file" id="check-input" accept="image/*" onchange="previewCheck(this)" style="display:none">
+
+            <button class="btn btn-primary btn-payment" id="btn-confirm-payment" disabled onclick="confirmPayment()">✅ To'lovni tasdiqlayman</button>
 
             <div id="payment-status" class="payment-status" style="display:none">
                 <div class="payment-spinner"></div>

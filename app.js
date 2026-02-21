@@ -115,27 +115,47 @@ function copyCard() {
     }
 }
 
-// Confirm payment — notify admin via Bot API (app stays open)
+// Check image file stored here
+var checkFile = null;
+
+// Preview uploaded check image
+function previewCheck(input) {
+    if (input.files && input.files[0]) {
+        checkFile = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var preview = document.getElementById('check-preview');
+            var placeholder = document.getElementById('upload-placeholder');
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+            placeholder.style.display = 'none';
+            document.getElementById('btn-confirm-payment').disabled = false;
+        };
+        reader.readAsDataURL(checkFile);
+    }
+}
+
+// Confirm payment — send check photo + notification to admin
 function confirmPayment() {
+    if (!checkFile) return;
+
     var btn = document.getElementById('btn-confirm-payment');
     var status = document.getElementById('payment-status');
     btn.style.display = 'none';
     status.style.display = 'block';
 
-    // Get user info from Telegram WebApp
     var user = (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) || {};
     var userId = user.id || 0;
     var firstName = user.first_name || '';
     var username = user.username ? '@' + user.username : "yo'q";
 
-    // Send notification to admin via Bot API
     var botToken = '7761508992:AAHXQqbG82100rNRa_M-2OWVmyfIH7B-UOY';
     var adminId = 5676160778;
-    var text = "🔔 <b>Yangi to'lov so'rovi!</b>\n\n" +
+
+    var caption = "🔔 Yangi to'lov so'rovi!\n\n" +
         "👤 Ism: " + firstName + "\n" +
-        "🆔 ID: <code>" + userId + "</code>\n" +
-        "📧 Username: " + username + "\n\n" +
-        "Tasdiqlaysizmi?";
+        "🆔 ID: " + userId + "\n" +
+        "📧 Username: " + username;
 
     var replyMarkup = JSON.stringify({
         inline_keyboard: [[
@@ -144,15 +164,16 @@ function confirmPayment() {
         ]]
     });
 
-    fetch('https://api.telegram.org/bot' + botToken + '/sendMessage', {
+    // Send check photo to admin with approve/reject buttons
+    var formData = new FormData();
+    formData.append('chat_id', adminId);
+    formData.append('photo', checkFile);
+    formData.append('caption', caption);
+    formData.append('reply_markup', replyMarkup);
+
+    fetch('https://api.telegram.org/bot' + botToken + '/sendPhoto', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: adminId,
-            text: text,
-            parse_mode: 'HTML',
-            reply_markup: replyMarkup
-        })
+        body: formData
     }).catch(function(err) {
         console.error('Payment notify error:', err);
     });
