@@ -186,25 +186,33 @@ function confirmPayment() {
 
 // Poll every 3s — check if bot pinned "PAID_CONFIRMED" message
 function startPaymentPolling(userId, botToken) {
-    var pollTimer = setInterval(function() {
-        fetch('https://api.telegram.org/bot' + botToken + '/getChat?chat_id=' + userId)
-            .then(function(r) { return r.json(); })
-            .then(function(data) {
-                if (data.ok && data.result && data.result.pinned_message &&
-                    data.result.pinned_message.text === 'PAID_CONFIRMED') {
-                    // Admin approved!
-                    clearInterval(pollTimer);
-                    var saved = JSON.parse(localStorage.getItem('ramazon_user') || '{}');
-                    saved.paid = true;
-                    localStorage.setItem('ramazon_user', JSON.stringify(saved));
+    // First unpin any OLD pinned messages so we only detect NEW approval
+    fetch('https://api.telegram.org/bot' + botToken + '/unpinAllChatMessages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: userId })
+    }).then(function() {
+        // Now start polling for new pin
+        var pollTimer = setInterval(function() {
+            fetch('https://api.telegram.org/bot' + botToken + '/getChat?chat_id=' + userId)
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.ok && data.result && data.result.pinned_message &&
+                        data.result.pinned_message.text === 'PAID_CONFIRMED') {
+                        // Admin approved!
+                        clearInterval(pollTimer);
+                        var saved = JSON.parse(localStorage.getItem('ramazon_user') || '{}');
+                        saved.paid = true;
+                        localStorage.setItem('ramazon_user', JSON.stringify(saved));
 
-                    // Go to recipes
-                    showScreen('screen-main');
-                    loadFoodScreen();
-                    setTimeout(function() { loadFoodGrid(currentTab); updateFeatured(currentTab); }, 100);
-                }
-            }).catch(function() {});
-    }, 3000);
+                        // Go to recipes
+                        showScreen('screen-main');
+                        loadFoodScreen();
+                        setTimeout(function() { loadFoodGrid(currentTab); updateFeatured(currentTab); }, 100);
+                    }
+                }).catch(function() {});
+        }, 3000);
+    }).catch(function() {});
 }
 
 
